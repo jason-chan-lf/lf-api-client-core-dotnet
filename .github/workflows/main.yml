@@ -77,13 +77,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     if: ${{ github.run_attempt != 1 }}
     needs: [ build-documentation ] # wait for build to finish
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
     steps:
-    - name: Setup Pages
-      uses: actions/configure-pages@v2
     - name: Create temporary directory
       run: mkdir -p ./docs_temp/${{ github.ref_name }}/html/
 
@@ -93,12 +87,9 @@ jobs:
         name: documentation-artifact
         path: ${{ github.workspace }}/docs_temp/${{ github.ref_name }}/html/
 
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v1
+    - name: push
+      uses: actions-x/commit@v6
       with:
-        # Upload entire repository
-        path: './docs_temp/${{ github.ref_name }}/html/'
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v1
-
+        branch: gh-pages
+        files: ${{ github.workspace }}/docs_temp/${{ github.ref_name }}/html/
+        directory: ${{ github.ref_name }}
