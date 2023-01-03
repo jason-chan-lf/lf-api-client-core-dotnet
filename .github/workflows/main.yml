@@ -94,5 +94,8 @@ jobs:
       uses: peter-evans/create-pull-request@v4.2.3
       with:
         branch: gh-pages-patch
-        #delete-branch: true
-        #title: "Automated documentation changes"
+        delete-branch: true
+        title: "Automated documentation update for branch ${{ github.ref_name }}"
+        commit-message: "Update for branch ${{ github.ref_name }} created by action ${{ github.run_id }}"
+        body: "Automated pull request for updating the ${{ github.ref_name }} branch documentation. This pull request was initially created from ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}."
+        assignees: ${{ github.actor }}
