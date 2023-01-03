@@ -12,6 +12,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+
     - uses: actions/checkout@v3
 
     - name: Install dependencies
@@ -97,5 +102,5 @@ jobs:
         delete-branch: true
         title: "Automated documentation update for branch ${{ github.ref_name }}"
         commit-message: "Update for branch ${{ github.ref_name }} created by action ${{ github.run_id }}"
-        body: "Automated pull request for updating the ${{ github.ref_name }} branch documentation. This pull request was initially created from ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}."
+        body: "Automated pull request for updating the ${{ github.ref_name }} branch documentation. This pull request was initially created from ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
         assignees: ${{ github.actor }}

@@ -27,3 +27,5 @@ See the [.github/workflows/main.yml](https://github.com/Laserfiche/lf-api-client
 ### Change Log
 
 See CHANGELOG [here](https://github.com/Laserfiche/lf-api-client-core-dotnet/blob/HEAD/CHANGELOG.md).
+
+Readme update
