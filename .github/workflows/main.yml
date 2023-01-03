@@ -84,7 +84,7 @@ jobs:
         ref: 'gh-pages'
 
     - name: Delete documentation directory
-      run: rm -r ${{ github.ref_name }}
+      run: rm -f -r ${{ github.ref_name }}
 
     - name: Create documentation directory
       run: mkdir ${{ github.ref_name }}
