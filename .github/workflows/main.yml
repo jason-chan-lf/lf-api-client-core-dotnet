@@ -74,18 +74,25 @@ jobs:
     if: ${{ github.run_attempt != 1 }}
     needs: [ build-documentation ] # wait for build to finish
     steps:
-    - name: Create temporary directory
-      run: mkdir -p ./docs_temp/${{ github.ref_name }}/html/
+    - uses: actions/checkout@v3
+      with:
+        ref: 'gh-pages'
 
-    - name: Download a Build Artifact
+    - name: Delete documentation directory
+      run: rm -r ${{ github.ref_name }}
+
+    - name: Create documentation directory
+      run: mkdir ${{ github.ref_name }}
+
+    - name: Download documentation build artifact
       uses: actions/download-artifact@v3.0.0
       with:
         name: documentation-artifact
-        path: ${{ github.workspace }}/docs_temp/${{ github.ref_name }}/html/
+        path: ${{ github.ref_name }}
 
-    - name: push
-      uses: actions-x/commit@v6
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v4.2.3
       with:
-        branch: gh-pages
-        files: ${{ github.workspace }}/docs_temp/${{ github.ref_name }}/html/
-        directory: ${{ github.ref_name }}
+        branch: gh-pages/patch
+        #delete-branch: true
+        #title: "Automated documentation changes"
