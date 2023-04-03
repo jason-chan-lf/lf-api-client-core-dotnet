@@ -18,19 +18,6 @@ jobs:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo "$GITHUB_CONTEXT"
 
-    - name: Set MAJOR_VERSION environment variable
-      run: |
-        if [[ ${{ github.event_name == 'pull_request' }} ]]; then
-          echo "MAJOR_VERSION=${{ github.base_ref }}" >> $GITHUB_ENV
-        else
-          echo "MAJOR_VERSION=${{ env.MAJOR_VERSION }}" >> $GITHUB_ENV
-        fi
-
-    - name: Print
-      run: |
-        echo MAJOR_VERSION = ${{ env.MAJOR_VERSION }}
-        echo MAJOR_VERSION = $MAJOR_VERSION
-
     - uses: actions/checkout@v3
 
     - name: Install dependencies
@@ -92,14 +79,17 @@ jobs:
     if: ${{ github.run_attempt != 1 }}
     needs: [ build-documentation ] # wait for build to finish
     steps:
+    - name: Set MAJOR_VERSION environment variable
+      run: |
+        if [[ ${{ github.event_name == 'pull_request' }} ]]; then
+          echo "MAJOR_VERSION=${{ github.base_ref }}" >> $GITHUB_ENV
+        else
+          echo "MAJOR_VERSION=${{ env.MAJOR_VERSION }}" >> $GITHUB_ENV
+        fi
+
     - uses: actions/checkout@v3
       with:
         ref: 'gh-pages'
-
-    - name: Print
-      run: |
-        echo MAJOR_VERSION = ${{ env.MAJOR_VERSION }}
-        echo MAJOR_VERSION = $MAJOR_VERSION
 
     - name: Delete documentation directory
       run: rm -f -r ${{ env.MAJOR_VERSION }}
