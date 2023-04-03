@@ -84,10 +84,10 @@ jobs:
     steps:
     - name: Set MAJOR_VERSION environment variable
       run: |
-        if [[ ${{ github.event_name == 'pull_request' }} ]]; then
+        if ${{ github.event_name == 'pull_request' }}; then
           echo "MAJOR_VERSION=${{ github.base_ref }}" >> $GITHUB_ENV
         else
-          echo "MAJOR_VERSION=${{ env.MAJOR_VERSION }}" >> $GITHUB_ENV
+          echo "MAJOR_VERSION=${{ github.ref_name }}" >> $GITHUB_ENV
         fi
 
     - uses: actions/checkout@v3
