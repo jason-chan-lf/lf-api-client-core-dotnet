@@ -95,21 +95,21 @@ jobs:
         ref: ${{ env.GITHUB_PAGES_BRANCH }}
 
     - name: Delete documentation directory
-      run: rm -f -r ${{ env.MAJOR_VERSION }}
+      run: rm -f -r ./docs/${{ env.MAJOR_VERSION }}
 
     - name: Create documentation directory
-      run: mkdir ${{ env.MAJOR_VERSION }}
+      run: mkdir ./docs/${{ env.MAJOR_VERSION }}
 
     - name: Download documentation build artifact
       uses: actions/download-artifact@v3.0.0
       with:
         name: documentation-artifact
-        path: ${{ env.MAJOR_VERSION }}
+        path: ./docs/${{ env.MAJOR_VERSION }}
 
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4.2.3
       with:
-        branch: ${{ env.GITHUB_PAGES_BRANCH }}/patch-${{ env.MAJOR_VERSION }}
+        branch: ${{ env.GITHUB_PAGES_BRANCH }}-${{ env.MAJOR_VERSION }}-patch
         delete-branch: true
         title: "Automated documentation update for branch ${{ env.MAJOR_VERSION }}"
         commit-message: "Update for branch ${{ env.MAJOR_VERSION }} created by action ${{ github.run_id }}"
