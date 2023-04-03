@@ -8,6 +8,9 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+env:
+  GITHUB_PAGES_BRANCH: 'gh-pages'
+
 jobs:
   build-documentation:
     runs-on: ubuntu-latest
@@ -89,7 +92,7 @@ jobs:
 
     - uses: actions/checkout@v3
       with:
-        ref: 'gh-pages'
+        ref: ${{ env.GITHUB_PAGES_BRANCH }}
 
     - name: Delete documentation directory
       run: rm -f -r ${{ env.MAJOR_VERSION }}
@@ -106,9 +109,9 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4.2.3
       with:
-        branch: gh-pages-patch-${{ env.MAJOR_VERSION }}
+        branch: ${{ env.GITHUB_PAGES_BRANCH }}-patch-${{ env.MAJOR_VERSION }}
         delete-branch: true
         title: "Automated documentation update for branch ${{ env.MAJOR_VERSION }}"
         commit-message: "Update for branch ${{ env.MAJOR_VERSION }} created by action ${{ github.run_id }}"
-        body: "Automated pull request for updating the ${{ env.MAJOR_VERSION }} branch documentation."
+        body: "Automated pull request for updating the ${{ env.GITHUB_PAGES_BRANCH }} branch ${{ env.MAJOR_VERSION }} version documentation."
         assignees: ${{ github.actor }}
