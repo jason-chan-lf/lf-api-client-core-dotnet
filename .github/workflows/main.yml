@@ -21,6 +21,19 @@ jobs:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo "$GITHUB_CONTEXT"
 
+    - name: Print env var
+      run: echo ${{ env.DOCUMENTATION_FOLDER }}
+
+    - name: Set documentation folder
+      run: |
+        if [[ ${{ github.event_name == 'pull_request' }} ]]; then
+          echo "DOCUMENTATION_FOLDER=${{ github.base_ref }}" >> $GITHUB_ENV
+        elif [[ ${{ github.event_name == 'workflow_dispatch' }} ]]; then
+          echo "DOCUMENTATION_FOLDER=${{ github.ref_name }}" >> $GITHUB_ENV
+        else
+          echo "DOCUMENTATION_FOLDER=" >> $GITHUB_ENV
+        fi
+
     - uses: actions/checkout@v3
 
     - name: Install dependencies
@@ -73,6 +86,14 @@ jobs:
     - name: Delete doxygen config
       run: rm -f doxygen.conf
 
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: ${{ env.DOCUMENTATION_FOLDER != '' }}
+    needs: [ build-documentation ] # wait for build to finish
+    steps:
+    - name: Print env var
+      run: echo ${{ env.DOCUMENTATION_FOLDER }}
 
   publish-documentation:
     runs-on: ubuntu-latest
