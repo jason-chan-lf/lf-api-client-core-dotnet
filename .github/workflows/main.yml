@@ -78,7 +78,7 @@ jobs:
     timeout-minutes: 10
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      # url: ${{ steps.deployment.outputs.page_url }}
     if: ${{ github.run_attempt != 1 }}
     needs: [ build-documentation ] # wait for build to finish
     steps:
@@ -98,7 +98,7 @@ jobs:
       run: rm -f -r ./docs/${{ env.MAJOR_VERSION }}
 
     - name: Create documentation directory
-      run: mkdir ./docs/${{ env.MAJOR_VERSION }}
+      run: mkdir -p ./docs/${{ env.MAJOR_VERSION }}
 
     - name: Download documentation build artifact
       uses: actions/download-artifact@v3.0.0
