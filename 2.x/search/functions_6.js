@@ -1,5 +1,0 @@
-var searchData=
-[
-  ['tokenasync_96',['TokenAsync',['../interfaceLaserfiche_1_1Api_1_1Client_1_1APIServer_1_1ITokenClient.html#ae537a29c26c484108c0a2ed14d2c6b6d',1,'Laserfiche.Api.Client.APIServer.ITokenClient.TokenAsync()'],['../classLaserfiche_1_1Api_1_1Client_1_1APIServer_1_1TokenClient.html#a658333d78f46689d0fa493faf61430d8',1,'Laserfiche.Api.Client.APIServer.TokenClient.TokenAsync()'],['../interfaceLaserfiche_1_1Api_1_1Client_1_1OAuth_1_1ITokenClient.html#ae357253a7b60dfcfd1ea62ccfff8671c',1,'Laserfiche.Api.Client.OAuth.ITokenClient.TokenAsync()'],['../classLaserfiche_1_1Api_1_1Client_1_1OAuth_1_1TokenClient.html#a3ac55ec879a5ee6c2fb94d8c6e80fb0f',1,'Laserfiche.Api.Client.OAuth.TokenClient.TokenAsync(GetAccessTokenRequest body=null, string authorization=null, System.Threading.CancellationToken cancellationToken=default(System.Threading.CancellationToken))']]],
-  ['tokenclient_97',['TokenClient',['../classLaserfiche_1_1Api_1_1Client_1_1OAuth_1_1TokenClient.html#aae987abc5f91c1c965d443c78a6f2bd9',1,'Laserfiche::Api::Client::OAuth::TokenClient']]]
-];
