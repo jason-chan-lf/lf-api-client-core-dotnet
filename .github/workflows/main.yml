@@ -109,7 +109,7 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4.2.3
       with:
-        branch: ${{ env.GITHUB_PAGES_BRANCH }}-patch-${{ env.MAJOR_VERSION }}
+        branch: ${{ env.GITHUB_PAGES_BRANCH }}/patch-${{ env.MAJOR_VERSION }}
         delete-branch: true
         title: "Automated documentation update for branch ${{ env.MAJOR_VERSION }}"
         commit-message: "Update for branch ${{ env.MAJOR_VERSION }} created by action ${{ github.run_id }}"
