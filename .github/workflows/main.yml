@@ -26,6 +26,11 @@ jobs:
           echo "MAJOR_VERSION=${{ env.MAJOR_VERSION }}" >> $GITHUB_ENV
         fi
 
+    - name: Print
+      run: |
+        echo MAJOR_VERSION = ${{ env.MAJOR_VERSION }}
+        echo MAJOR_VERSION = $MAJOR_VERSION
+
     - uses: actions/checkout@v3
 
     - name: Install dependencies
@@ -90,6 +95,11 @@ jobs:
     - uses: actions/checkout@v3
       with:
         ref: 'gh-pages'
+
+    - name: Print
+      run: |
+        echo MAJOR_VERSION = ${{ env.MAJOR_VERSION }}
+        echo MAJOR_VERSION = $MAJOR_VERSION
 
     - name: Delete documentation directory
       run: rm -f -r ${{ env.MAJOR_VERSION }}
