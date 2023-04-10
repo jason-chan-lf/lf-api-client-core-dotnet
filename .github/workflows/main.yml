@@ -12,9 +12,17 @@ env:
   GITHUB_PAGES_BRANCH: 'gh-pages'
 
 jobs:
+  build-n-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - name: echo
+      run: echo hi
+
   build-documentation:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    needs: [ build-n-test ] # wait for build to finish
     steps:
     - name: Dump GitHub context
       env:
@@ -73,14 +81,30 @@ jobs:
     - name: Delete doxygen config
       run: rm -f doxygen.conf
 
+  publish-preview-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: ${{ github.run_attempt != 1 }}
+    needs: [ build-n-test, build-documentation ] # wait for build to finish
+    steps:
+    - name: echo
+      run: echo hi
+
+  publish-production-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: ${{ github.run_attempt != 1 }}
+    needs: [ build-n-test, build-documentation ] # wait for build to finish
+    steps:
+    - name: echo
+      run: echo hi
+
   publish-documentation:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     environment:
       name: github-pages
-      # url: ${{ steps.deployment.outputs.page_url }}
-    if: ${{ github.run_attempt != 1 }}
-    needs: [ build-documentation ] # wait for build to finish
+    needs: [ publish-production-package ]
     steps:
     - name: Set MAJOR_VERSION environment variable
       run: |
