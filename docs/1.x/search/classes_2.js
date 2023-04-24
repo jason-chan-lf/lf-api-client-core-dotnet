@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['createconnectionrequest_67',['CreateConnectionRequest',['../classLaserfiche_1_1Api_1_1Client_1_1APIServer_1_1CreateConnectionRequest.html',1,'Laserfiche::Api::Client::APIServer']]]
+  ['createconnectionrequest_67',['CreateConnectionRequest',['../class_laserfiche_1_1_api_1_1_client_1_1_a_p_i_server_1_1_create_connection_request.html',1,'Laserfiche::Api::Client::APIServer']]]
 ];

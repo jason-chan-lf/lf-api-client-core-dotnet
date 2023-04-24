@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['username_128',['Username',['../classLaserfiche_1_1Api_1_1Client_1_1APIServer_1_1CreateConnectionRequest.html#a29ebf59f9cef2f5a43f986d795a59ab1',1,'Laserfiche::Api::Client::APIServer::CreateConnectionRequest']]]
+  ['username_128',['Username',['../class_laserfiche_1_1_api_1_1_client_1_1_a_p_i_server_1_1_create_connection_request.html#acc7e2f953f8dbfceb1c5a3834b78e3f7',1,'Laserfiche::Api::Client::APIServer::CreateConnectionRequest']]]
 ];

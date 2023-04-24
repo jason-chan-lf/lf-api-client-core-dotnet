@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['username_62',['Username',['../classLaserfiche_1_1Api_1_1Client_1_1APIServer_1_1CreateConnectionRequest.html#a29ebf59f9cef2f5a43f986d795a59ab1',1,'Laserfiche::Api::Client::APIServer::CreateConnectionRequest']]],
-  ['usernamepasswordhandler_63',['UsernamePasswordHandler',['../classLaserfiche_1_1Api_1_1Client_1_1HttpHandlers_1_1UsernamePasswordHandler.html',1,'Laserfiche.Api.Client.HttpHandlers.UsernamePasswordHandler'],['../classLaserfiche_1_1Api_1_1Client_1_1HttpHandlers_1_1UsernamePasswordHandler.html#ac887605ee3f31e7949a9e4082b61ae43',1,'Laserfiche.Api.Client.HttpHandlers.UsernamePasswordHandler.UsernamePasswordHandler()']]]
+  ['username_62',['Username',['../class_laserfiche_1_1_api_1_1_client_1_1_a_p_i_server_1_1_create_connection_request.html#acc7e2f953f8dbfceb1c5a3834b78e3f7',1,'Laserfiche::Api::Client::APIServer::CreateConnectionRequest']]],
+  ['usernamepasswordhandler_63',['UsernamePasswordHandler',['../class_laserfiche_1_1_api_1_1_client_1_1_http_handlers_1_1_username_password_handler.html',1,'UsernamePasswordHandler'],['../class_laserfiche_1_1_api_1_1_client_1_1_http_handlers_1_1_username_password_handler.html#abf9bbcfe3fcddbb7d0ab785c7d4e2513',1,'Laserfiche.Api.Client.HttpHandlers.UsernamePasswordHandler.UsernamePasswordHandler()']]]
 ];

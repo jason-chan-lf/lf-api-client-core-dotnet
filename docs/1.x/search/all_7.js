@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['ihttprequesthandler_31',['IHttpRequestHandler',['../interfaceLaserfiche_1_1Api_1_1Client_1_1HttpHandlers_1_1IHttpRequestHandler.html',1,'Laserfiche::Api::Client::HttpHandlers']]],
-  ['instance_32',['Instance',['../classLaserfiche_1_1Api_1_1Client_1_1ProblemDetails.html#ad7515859bd0e507b7cfea317a5564059',1,'Laserfiche::Api::Client::ProblemDetails']]],
-  ['itokenclient_33',['ITokenClient',['../interfaceLaserfiche_1_1Api_1_1Client_1_1APIServer_1_1ITokenClient.html',1,'Laserfiche.Api.Client.APIServer.ITokenClient'],['../interfaceLaserfiche_1_1Api_1_1Client_1_1OAuth_1_1ITokenClient.html',1,'Laserfiche.Api.Client.OAuth.ITokenClient']]]
+  ['ihttprequesthandler_31',['IHttpRequestHandler',['../interface_laserfiche_1_1_api_1_1_client_1_1_http_handlers_1_1_i_http_request_handler.html',1,'Laserfiche::Api::Client::HttpHandlers']]],
+  ['instance_32',['Instance',['../class_laserfiche_1_1_api_1_1_client_1_1_problem_details.html#a7c93538c0bd543a15debe857a0506572',1,'Laserfiche::Api::Client::ProblemDetails']]],
+  ['itokenclient_33',['ITokenClient',['../interface_laserfiche_1_1_api_1_1_client_1_1_a_p_i_server_1_1_i_token_client.html',1,'ITokenClient'],['../interface_laserfiche_1_1_api_1_1_client_1_1_o_auth_1_1_i_token_client.html',1,'ITokenClient']]]
 ];
