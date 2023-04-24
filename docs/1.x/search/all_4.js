@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['errorcode_19',['ErrorCode',['../classLaserfiche_1_1Api_1_1Client_1_1ProblemDetails.html#af613dc3ee39bae6b8caeaafbafefa341',1,'Laserfiche::Api::Client::ProblemDetails']]],
-  ['errorsource_20',['ErrorSource',['../classLaserfiche_1_1Api_1_1Client_1_1ProblemDetails.html#a4e34dee23c3094013772cd1345f35ba4',1,'Laserfiche::Api::Client::ProblemDetails']]],
-  ['expire_5fin_21',['Expire_in',['../classLaserfiche_1_1Api_1_1Client_1_1APIServer_1_1SessionKeyInfo.html#a758b606808e2231e58e4b09876c565f9',1,'Laserfiche::Api::Client::APIServer::SessionKeyInfo']]],
-  ['extensions_22',['Extensions',['../classLaserfiche_1_1Api_1_1Client_1_1ProblemDetails.html#a67fe33bcdef9333e316d716941ab6216',1,'Laserfiche::Api::Client::ProblemDetails']]]
+  ['errorcode_19',['ErrorCode',['../class_laserfiche_1_1_api_1_1_client_1_1_problem_details.html#a7165907061c37e62034d67ebe7686e0d',1,'Laserfiche::Api::Client::ProblemDetails']]],
+  ['errorsource_20',['ErrorSource',['../class_laserfiche_1_1_api_1_1_client_1_1_problem_details.html#ad98adaf13126b13970c2d4b2fcd088a5',1,'Laserfiche::Api::Client::ProblemDetails']]],
+  ['expire_5fin_21',['Expire_in',['../class_laserfiche_1_1_api_1_1_client_1_1_a_p_i_server_1_1_session_key_info.html#a5f00b00e9a1cff58803f4f4dd8dab2c5',1,'Laserfiche::Api::Client::APIServer::SessionKeyInfo']]],
+  ['extensions_22',['Extensions',['../class_laserfiche_1_1_api_1_1_client_1_1_problem_details.html#ad7fefd3878c2d95a14acedb3eef3479f',1,'Laserfiche::Api::Client::ProblemDetails']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['getaccesstokenrequest_69',['GetAccessTokenRequest',['../classLaserfiche_1_1Api_1_1Client_1_1OAuth_1_1GetAccessTokenRequest.html',1,'Laserfiche::Api::Client::OAuth']]],
-  ['getaccesstokenresponse_70',['GetAccessTokenResponse',['../classLaserfiche_1_1Api_1_1Client_1_1OAuth_1_1GetAccessTokenResponse.html',1,'Laserfiche::Api::Client::OAuth']]]
+  ['getaccesstokenrequest_69',['GetAccessTokenRequest',['../class_laserfiche_1_1_api_1_1_client_1_1_o_auth_1_1_get_access_token_request.html',1,'Laserfiche::Api::Client::OAuth']]],
+  ['getaccesstokenresponse_70',['GetAccessTokenResponse',['../class_laserfiche_1_1_api_1_1_client_1_1_o_auth_1_1_get_access_token_response.html',1,'Laserfiche::Api::Client::OAuth']]]
 ];

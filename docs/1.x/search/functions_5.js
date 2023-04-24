@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['refreshaccesstoken_95',['RefreshAccessToken',['../interfaceLaserfiche_1_1Api_1_1Client_1_1OAuth_1_1ITokenClient.html#a2c5e64dda0e98f499fc9aaaa82b37274',1,'Laserfiche.Api.Client.OAuth.ITokenClient.RefreshAccessToken()'],['../classLaserfiche_1_1Api_1_1Client_1_1OAuth_1_1TokenClient.html#a1c3a7409e06b62ae413873d114a2274e',1,'Laserfiche.Api.Client.OAuth.TokenClient.RefreshAccessToken()']]]
+  ['refreshaccesstoken_95',['RefreshAccessToken',['../interface_laserfiche_1_1_api_1_1_client_1_1_o_auth_1_1_i_token_client.html#aef2f0eed626c19d7e77291935b312171',1,'Laserfiche.Api.Client.OAuth.ITokenClient.RefreshAccessToken()'],['../class_laserfiche_1_1_api_1_1_client_1_1_o_auth_1_1_token_client.html#ade53804556d6152d28997d11a56010a3',1,'Laserfiche.Api.Client.OAuth.TokenClient.RefreshAccessToken()']]]
 ];

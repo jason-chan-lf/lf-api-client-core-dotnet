@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['password_46',['Password',['../classLaserfiche_1_1Api_1_1Client_1_1APIServer_1_1CreateConnectionRequest.html#aad13cdb13d4a2ae12033ced6cf0ecb8c',1,'Laserfiche::Api::Client::APIServer::CreateConnectionRequest']]],
-  ['problemdetails_47',['ProblemDetails',['../classLaserfiche_1_1Api_1_1Client_1_1ProblemDetails.html',1,'Laserfiche.Api.Client.ProblemDetails'],['../classLaserfiche_1_1Api_1_1Client_1_1ApiException.html#ae1cf53463c8f19a7ca7785cf16ca648d',1,'Laserfiche.Api.Client.ApiException.ProblemDetails()']]]
+  ['password_46',['Password',['../class_laserfiche_1_1_api_1_1_client_1_1_a_p_i_server_1_1_create_connection_request.html#a9c7aae3a8518d5efd22e991b5944e0d4',1,'Laserfiche::Api::Client::APIServer::CreateConnectionRequest']]],
+  ['problemdetails_47',['ProblemDetails',['../class_laserfiche_1_1_api_1_1_client_1_1_problem_details.html',1,'ProblemDetails'],['../class_laserfiche_1_1_api_1_1_client_1_1_api_exception.html#ac45337a8e38296b3d471715b15c2b414',1,'Laserfiche.Api.Client.ApiException.ProblemDetails()']]]
 ];
