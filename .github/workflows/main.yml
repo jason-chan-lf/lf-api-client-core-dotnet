@@ -90,10 +90,15 @@ jobs:
     steps:
     - name: Set MAJOR_VERSION environment variable
       run: |
-        if ${{ github.event_name == 'pull_request' }}; then
+        if [[ ${{ github.event_name == 'pull_request' }} ]]; then
           echo "MAJOR_VERSION=${{ github.base_ref }}" >> $GITHUB_ENV
-        else
+        elif [[ ${{ github.ref_protected == 'true' }} && ${{ github.ref_type == 'branch' }} ]]; then
           echo "MAJOR_VERSION=${{ github.ref_name }}" >> $GITHUB_ENV
+        fi
+
+        if [[ ${{ env.MAJOR_VERSION }} == '' ]]; then
+          echo "Unable to publish documentation for the current branch."
+          exit 1
         fi
 
     - uses: actions/checkout@v3
