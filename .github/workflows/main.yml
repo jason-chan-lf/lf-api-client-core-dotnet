@@ -18,7 +18,7 @@ jobs:
     steps:
     - name: echo
       run: |
-        echo 'Unable to publish documentation for the current branch.' >> /dev/stderr
+        echo "::error::Unable to publish documentation for the current branch."
         exit 1
 
   build-documentation:
