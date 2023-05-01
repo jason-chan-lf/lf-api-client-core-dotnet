@@ -17,7 +17,9 @@ jobs:
     timeout-minutes: 10
     steps:
     - name: echo
-      run: echo hi
+      run: |
+        echo 'Unable to publish documentation for the current branch.' >> /dev/stderr
+        exit 1
 
   build-documentation:
     runs-on: ubuntu-latest
@@ -95,7 +97,7 @@ jobs:
         elif [[ '${{ github.ref_protected }}' == 'true' && '${{ github.ref_type }}' == 'branch' ]]; then
           echo 'MAJOR_VERSION=${{ github.ref_name }}' >> $GITHUB_ENV
         else
-          echo 'Unable to publish documentation for the current branch.' >&2
+          echo 'Unable to publish documentation for the current branch.'
           exit 1
         fi
 
