@@ -1,1 +1,2 @@
 file inside a folder with whitespace name
+https://jason-chan-lf.github.io/lf-api-client-core-dotnet/docs/test/emptyfolder/%20/folder/file.txt
