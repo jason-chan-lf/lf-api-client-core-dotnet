@@ -20,112 +20,112 @@ jobs:
       run: |
         echo "hello"
 
-  build-documentation:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    needs: [ build-n-test ] # wait for build to finish
-    steps:
-    - name: Dump GitHub context
-      env:
-        GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
+  # build-documentation:
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 10
+  #   needs: [ build-n-test ] # wait for build to finish
+  #   steps:
+  #   - name: Dump GitHub context
+  #     env:
+  #       GITHUB_CONTEXT: ${{ toJson(github) }}
+  #     run: echo "$GITHUB_CONTEXT"
 
-    - uses: actions/checkout@v3
+  #   - uses: actions/checkout@v3
 
-    - name: Install dependencies
-      run: |
-        sudo apt-get install doxygen
-        sudo apt-get install graphviz
+  #   - name: Install dependencies
+  #     run: |
+  #       sudo apt-get install doxygen
+  #       sudo apt-get install graphviz
 
-    - name: Check dependency versions
-      run: |
-        doxygen --version
-        dot -V
+  #   - name: Check dependency versions
+  #     run: |
+  #       doxygen --version
+  #       dot -V
 
-    - name: Create temporary directory
-      run: mkdir -p ./generated_documentation/
+  #   - name: Create temporary directory
+  #     run: mkdir -p ./generated_documentation/
 
-    - name: Rewrite doxygen config
-      run: |
-        sed -i 's|PROJECT_NUMBER         = version|PROJECT_NUMBER         = ${{ env.VERSION_PREFIX }}|i' ./doxygen/doxygen.conf
+  #   - name: Rewrite doxygen config
+  #     run: |
+  #       sed -i 's|PROJECT_NUMBER         = version|PROJECT_NUMBER         = ${{ env.VERSION_PREFIX }}|i' ./doxygen/doxygen.conf
 
-    - name: Dump doxygen.conf to check rewrite
-      run: head -n 200 ./doxygen/doxygen.conf
+  #   - name: Dump doxygen.conf to check rewrite
+  #     run: head -n 200 ./doxygen/doxygen.conf
 
-    - name: Generate doxygen docs
-      run: doxygen ./doxygen/doxygen.conf
+  #   - name: Generate doxygen docs
+  #     run: doxygen ./doxygen/doxygen.conf
 
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3.1.0
-      with:
-        name: documentation-artifact
-        path: ${{ github.workspace }}/generated_documentation/html
+  #   - name: Upload a Build Artifact
+  #     uses: actions/upload-artifact@v3.1.0
+  #     with:
+  #       name: documentation-artifact
+  #       path: ${{ github.workspace }}/generated_documentation/html
 
-    - name: Delete temporary directory
-      run: rm -r ./generated_documentation
+  #   - name: Delete temporary directory
+  #     run: rm -r ./generated_documentation
 
-  publish-preview-package:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    if: ${{ github.run_attempt != 1 }}
-    needs: [ build-n-test, build-documentation ] # wait for build to finish
-    steps:
-    - name: echo
-      run: echo hi
+  # publish-preview-package:
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 10
+  #   if: ${{ github.run_attempt != 1 }}
+  #   needs: [ build-n-test, build-documentation ] # wait for build to finish
+  #   steps:
+  #   - name: echo
+  #     run: echo hi
 
-  publish-production-package:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    if: ${{ github.run_attempt != 1 }}
-    needs: [ build-n-test, build-documentation ] # wait for build to finish
-    steps:
-    - name: echo
-      run: echo hi
+  # publish-production-package:
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 10
+  #   if: ${{ github.run_attempt != 1 }}
+  #   needs: [ build-n-test, build-documentation ] # wait for build to finish
+  #   steps:
+  #   - name: echo
+  #     run: echo hi
 
-  publish-documentation:
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    environment:
-      name: github-pages
-    needs: [ publish-production-package ]
-    steps:
-    - name: Set MAJOR_VERSION environment variable
-      run: |
-        if [[ '${{ github.event_name }}' == 'pull_request' ]]; then
-          echo 'MAJOR_VERSION=${{ github.base_ref }}' >> $GITHUB_ENV
-        elif [[ '${{ github.ref_protected }}' == 'true' && '${{ github.ref_type }}' == 'branch' ]]; then
-          echo 'MAJOR_VERSION=${{ github.ref_name }}' >> $GITHUB_ENV
-        else
-          echo "::error::Unable to publish documentation for the current branch."
-          exit 1
-        fi
+  # publish-documentation:
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 10
+  #   environment:
+  #     name: github-pages
+  #   needs: [ publish-production-package ]
+  #   steps:
+  #   - name: Set MAJOR_VERSION environment variable
+  #     run: |
+  #       if [[ '${{ github.event_name }}' == 'pull_request' ]]; then
+  #         echo 'MAJOR_VERSION=${{ github.base_ref }}' >> $GITHUB_ENV
+  #       elif [[ '${{ github.ref_protected }}' == 'true' && '${{ github.ref_type }}' == 'branch' ]]; then
+  #         echo 'MAJOR_VERSION=${{ github.ref_name }}' >> $GITHUB_ENV
+  #       else
+  #         echo "::error::Unable to publish documentation for the current branch."
+  #         exit 1
+  #       fi
 
-    - name: Print MAJOR_VERSION environment variable
-      run: |
-        echo 'Publishing documentation to ${{ env.GITHUB_PAGES_BRANCH }} for the ${{ env.MAJOR_VERSION }} branch.'
+  #   - name: Print MAJOR_VERSION environment variable
+  #     run: |
+  #       echo 'Publishing documentation to ${{ env.GITHUB_PAGES_BRANCH }} for the ${{ env.MAJOR_VERSION }} branch.'
 
-    - uses: actions/checkout@v3
-      with:
-        ref: ${{ env.GITHUB_PAGES_BRANCH }}
+  #   - uses: actions/checkout@v3
+  #     with:
+  #       ref: ${{ env.GITHUB_PAGES_BRANCH }}
 
-    - name: Delete documentation directory
-      run: rm -f -r ./docs/${{ env.MAJOR_VERSION }}
+  #   - name: Delete documentation directory
+  #     run: rm -f -r ./docs/${{ env.MAJOR_VERSION }}
 
-    - name: Create documentation directory
-      run: mkdir -p ./docs/${{ env.MAJOR_VERSION }}
+  #   - name: Create documentation directory
+  #     run: mkdir -p ./docs/${{ env.MAJOR_VERSION }}
 
-    - name: Download documentation build artifact
-      uses: actions/download-artifact@v3.0.0
-      with:
-        name: documentation-artifact
-        path: ./docs/${{ env.MAJOR_VERSION }}
+  #   - name: Download documentation build artifact
+  #     uses: actions/download-artifact@v3.0.0
+  #     with:
+  #       name: documentation-artifact
+  #       path: ./docs/${{ env.MAJOR_VERSION }}
 
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v4.2.3
-      with:
-        branch: ${{ env.GITHUB_PAGES_BRANCH }}-${{ env.MAJOR_VERSION }}-patch
-        delete-branch: true
-        title: "Automated documentation update for branch ${{ env.MAJOR_VERSION }}"
-        commit-message: "Update for branch ${{ env.MAJOR_VERSION }} created by action ${{ github.run_id }}"
-        body: "Automated pull request for updating the ${{ env.GITHUB_PAGES_BRANCH }} branch ${{ env.MAJOR_VERSION }} version documentation."
-        assignees: ${{ github.actor }}
+  #   - name: Create Pull Request
+  #     uses: peter-evans/create-pull-request@v4.2.3
+  #     with:
+  #       branch: ${{ env.GITHUB_PAGES_BRANCH }}-${{ env.MAJOR_VERSION }}-patch
+  #       delete-branch: true
+  #       title: "Automated documentation update for branch ${{ env.MAJOR_VERSION }}"
+  #       commit-message: "Update for branch ${{ env.MAJOR_VERSION }} created by action ${{ github.run_id }}"
+  #       body: "Automated pull request for updating the ${{ env.GITHUB_PAGES_BRANCH }} branch ${{ env.MAJOR_VERSION }} version documentation."
+  #       assignees: ${{ github.actor }}
